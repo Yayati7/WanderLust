@@ -1,0 +1,62 @@
+<% layout("/layouts/boilerplate") -%>
+<body class="newbody">
+  <h3 class="page-title">List Your Place</h3>
+  <div class="newcontainer">
+    <form method="POST" action="/listings" class="listing-form needs-validation" novalidate enctype="multipart/form-data">
+      
+      <!-- Title -->
+      <div class="mb-3">
+        <input class="newform-input form-control" name="listing[title]" placeholder="enter title" type="text" required />
+        <div class="invalid-feedback">Title is required.</div>
+      </div>
+
+      <!-- Description -->
+      <div class="mb-3">
+        <textarea class="newform-textarea form-control" name="listing[description]" placeholder="enter description" required></textarea>
+        <div class="invalid-feedback">Description is required.</div>
+      </div>
+
+      <!-- Image  -->
+      <div class="mb-3">
+        <input class="newform-input form-control" name="listing[image]" placeholder="upload image" type="file" required />
+        <div class="invalid-feedback">Image is required.</div>
+      </div>
+
+      <!-- Price -->
+      <div class="mb-3">
+        <input class="newform-input form-control" name="listing[price]" placeholder="enter price" type="number" required />
+        <div class="invalid-feedback">Price is required.</div>
+      </div>
+
+      <!-- Country & Location side by side -->
+      <div class="form-row">
+        <div style="flex: 1;">
+          <input class="newform-input half-width form-control" name="listing[country]" placeholder="enter country" type="text" required />
+          <div class="invalid-feedback">Country is required.</div>
+        </div>
+
+        <div style="flex: 1;">
+          <input class="newform-input half-width form-control" name="listing[location]" placeholder="enter location" type="text" required />
+          <div class="invalid-feedback">Location is required.</div>
+        </div>
+      </div>
+
+      <br />
+      <button class="newbtn-submit" type="submit">Add</button>
+    </form>
+  </div>
+
+  <br><br>
+</body>
+
+<script>
+  // Auto dismiss flash after 4.5 seconds
+  setTimeout(() => {
+    document.querySelectorAll('.flash-message').forEach(flash => {
+      flash.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+      flash.style.opacity = '0';
+      flash.style.transform = 'translate(-50%, -30px)';
+      setTimeout(() => flash.remove(), 400);
+    });
+  }, 4500);
+</script>

@@ -1,0 +1,151 @@
+<script src="/js/searchbar.js"></script>
+
+<% if (isListingsPage) { %>
+  <div class="navbar-background-blocker"></div>
+<% } %>
+
+<% if (isListingsPage) { %>
+<nav class="fixed-navbar custom-navbar navbar-transition" id="mainNavbar">
+  <div class="top-row navbar-row">
+    <!-- Brand -->
+    <a class="brand" href="/listings">
+      <i class="fa-solid fa-compass"></i> WanderLust
+    </a>
+
+    <form class="search-form form-id top-search-form" method="GET" action="/listings">
+      <input
+        class="search-input"
+        type="search"
+        name="search"
+        placeholder="Search destinations"
+        value="<%= typeof search !== 'undefined' ? search : '' %>"
+      />
+      <button class="search-button" type="submit">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </form>
+
+    <!-- Auth/host links -->
+    <div class="nav-links desktop-only">
+      <a href="/listings/new">Become a host</a>
+      <span class="navbar-divider"></span>
+      <% if (!currUser) { %>
+        <a href="/signup">Signup</a>
+        <a href="/login">Login</a>
+      <% } else { %>
+        <a href="/logout">Log out</a>
+      <% } %>
+    </div>
+
+    <!-- Mobile toggle -->
+    <button class="sidebar-toggle" id="sidebarToggle">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </div>
+
+    <div class="middle-row homepage-only navbar-row">
+      <h1>Find your next<br>adventure</h1>
+    </div>
+
+    <div class="bottom-row homepage-only moving-search-container navbar-row">
+      <form class="search-form moving-search-form" method="GET" action="/listings">
+        <input
+          class="search-input"
+          type="search"
+          name="search"
+          placeholder="Search destinations"
+          value="<%= typeof search !== 'undefined' ? search : '' %>"
+        />
+        <button class="search-button" type="submit">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </form>
+    </div>
+</nav>
+<% } %>
+
+
+<% if (!isListingsPage) { %>
+<nav class="relative-navbar custom-navbar">
+  <div class="top-row">
+    <!-- Brand -->
+    <a class="brand" href="/listings">
+      <i class="fa-solid fa-compass"></i> WanderLust
+    </a>
+
+    <!-- Compact search (top) - always visible on non-home, appears on scroll on home -->
+    <form class="search-form form-id top-search-form nonhome-search" method="GET" action="/listings">
+      <input
+        class="search-input"
+        type="search"
+        name="search"
+        placeholder="Search destinations"
+        value="<%= typeof search !== 'undefined' ? search : '' %>"
+      />
+      <button class="search-button" type="submit">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </form>
+
+    <!-- Auth/host links -->
+    <div class="nav-links desktop-only">
+      <a href="/listings/new">Become a host</a>
+      <span class="navbar-divider"></span>
+      <% if (!currUser) { %>
+        <a href="/signup">Signup</a>
+        <a href="/login">Login</a>
+      <% } else { %>
+        <a href="/logout">Log out</a>
+      <% } %>
+    </div>
+
+    <!-- Mobile toggle -->
+    <button class="sidebar-toggle" id="sidebarToggle">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </div>
+</nav>
+<% } %>
+
+<!-- Sidebar drawer for mobile -->
+<div class="sidebar" id="sidebar">
+  <button class="close-btn" id="closeSidebar">&times;</button>
+  <a class="nav-link" href="/listings/new">Become a host</a>
+  <% if (!currUser) { %>
+    <a class="nav-link" href="/signup"><b>Sign up</b></a>
+    <a class="nav-link" href="/login"><b>Log in</b></a>
+  <% } else { %>
+    <a class="nav-link" href="/logout"><b>Log out</b></a>
+  <% } %>
+</div>
+
+<script>
+  const sidebar = document.getElementById("sidebar");
+  const toggleBtn = document.getElementById("sidebarToggle");
+  const closeBtn = document.getElementById("closeSidebar");
+
+  toggleBtn?.addEventListener("click", () => {
+    sidebar.classList.add("active");
+    document.body.classList.add("no-scroll");
+  });
+
+  closeBtn?.addEventListener("click", () => {
+    sidebar.classList.remove("active");
+    document.body.classList.remove("no-scroll");
+  });
+
+  // On homepage: shrink navbar on scroll to match other pages
+  <% if (isListingsPage) { %>
+  const navbar = document.getElementById('mainNavbar');
+  const homepageOnlyElements = document.querySelectorAll('.homepage-only');
+  const topSearch = document.querySelector('.top-search-form');
+
+  // Initially hide compact search form on homepage
+  window.addEventListener('DOMContentLoaded', () => {
+    if (topSearch) {
+      topSearch.style.display = 'none';
+    }
+  });
+  <% } %>
+</script>
+

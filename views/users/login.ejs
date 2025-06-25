@@ -1,0 +1,33 @@
+<% layout("/layouts/boilerplate") -%>
+
+<body class="newbody">
+  <h3 class="page-title">Login</h3>
+  <%- include("../includes/flash.ejs") %>
+  <div class="newcontainer">
+    <form method="POST" action="/login" class="listing-form needs-validation" novalidate>
+
+      <!-- Username -->
+      <div class="mb-3">
+        <label>Username</label>
+        <input class="newform-input form-control" name="username" type="text" required />
+      </div>
+
+      <!-- Password -->
+      <div class="mb-3">
+        <label>Password</label>
+        <input class="newform-input form-control" name="password" type="password" required />
+      </div>
+
+      <!-- Submit Button -->
+      <button class="newbtn-submit btn btn-success" type="submit">Login</button>
+      
+      <div class="new-user-register">
+        Don't have an account?
+        <a href="/signup" class="new-user-link">Sign up here</a>
+      </div>
+    </form>
+  </div>
+  <br><br>
+</body>
+
+<!-- Removed duplicate auto-dismiss script - it's now in boilerplate.ejs -->

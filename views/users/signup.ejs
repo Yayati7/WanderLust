@@ -1,0 +1,47 @@
+<% layout("/layouts/boilerplate") -%>
+<body class="newbody">
+  <h3 class="page-title">SignUp on Wanderlust</h3>
+  <div class="newcontainer">
+    <form method="POST" action="/signup" class="listing-form needs-validation" novalidate>
+
+      <!-- Username -->
+      <div class="mb-3">
+        <label>Username</label>
+        <input class="newform-input form-control" name="username" type="text" required />
+      </div>
+
+      <!-- Email -->
+      <div class="mb-3">
+        <label>Email</label>
+        <input class="newform-input form-control" name="email" type="email" required />
+      </div>
+
+      <!-- Password -->
+      <div class="mb-3">
+        <label>Password</label>
+        <input class="newform-input form-control" name="password" type="password" required />
+      </div>
+
+      <!-- Submit Button -->
+      <button class="newbtn-submit btn btn-success" type="submit">SignUp</button>
+
+      <div class="new-user-register">
+        Already have an account?
+        <a href="/login">Log in here</a>
+      </div>
+    </form>
+  </div>
+  <br><br>
+</body>
+
+<script>
+  // Auto dismiss flash after 4.5 seconds
+  setTimeout(() => {
+    document.querySelectorAll('.flash-message').forEach(flash => {
+      flash.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+      flash.style.opacity = '0';
+      flash.style.transform = 'translate(-50%, -30px)';
+      setTimeout(() => flash.remove(), 400);
+    });
+  }, 4500);
+</script>

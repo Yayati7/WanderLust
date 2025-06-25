@@ -1,0 +1,18 @@
+<!-- flash.ejs - FIXED version 
+<% if (success && success.length > 0) { %>
+  <% success.forEach(function(msg) { %>
+    <div class="flash-message flash-success animate-in" data-flash="success">
+        <%= msg %>
+        <button class="flash-close" onclick="this.parentElement.remove()">×</button>
+    </div>
+  <% }); %>
+<% } %>
+
+<% if (error && error.length > 0) { %>
+  <% error.forEach(function(msg) { %>
+    <div class="flash-message flash-error animate-in" data-flash="error">
+        <%= msg %>
+        <button class="flash-close" onclick="this.parentElement.remove()">×</button>
+    </div>
+  <% }); %>
+<% } %>-->

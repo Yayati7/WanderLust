@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Error</title>
+</head>
+<body>
+  <h1><%= err.statusCode || 500 %> - <%= err.message %></h1>
+  <% if (err.stack) { %>
+    <pre><%= err.stack %></pre>
+  <% } %>
+</body>
+</html>

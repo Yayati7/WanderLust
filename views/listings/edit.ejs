@@ -1,0 +1,99 @@
+<% layout("/layouts/boilerplate") -%>
+
+<h3 class="edit-heading">Edit your Listing</h3>
+<div class="form-container">
+  <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" class="needs-validation" novalidate enctype="multipart/form-data">
+  
+    <div class="mb-3">
+      <input 
+        name="listing[title]" 
+        value="<%= listing.title %>" 
+        type="text" 
+        placeholder="enter title" 
+        class="form-control" 
+        required
+      />
+      <div class="invalid-feedback">Title is required.</div>
+    </div>
+
+    <div class="mb-3">
+      <textarea 
+        name="listing[description]" 
+        placeholder="enter description" 
+        class="form-control" 
+        required
+      ><%= listing.description %></textarea>
+      <div class="invalid-feedback">Description is required.</div>
+    </div>
+
+    <div class="mb-3">
+      &nbsp Original Listing Image <br />
+      <img src="<%= originalImageUrl %>" alt="Original Listing Image" class="preview-thumbnail" />
+    </div>
+
+    <div class="mb-3">
+      <input 
+        name="listing[image]" 
+        value="<%= listing.image?.url || '' %>" 
+        type="file" 
+        placeholder="upload image" 
+        class="form-control" 
+        
+      />
+      <div class="invalid-feedback">Image URL is required.</div>
+    </div>
+
+    <div class="mb-3">
+      <input 
+        name="listing[price]" 
+        value="<%= listing.price %>" 
+        type="number" 
+        placeholder="enter price" 
+        class="form-control" 
+        required
+      />
+      <div class="invalid-feedback">Price is required.</div>
+    </div>
+
+    <div class="mb-3 d-flex gap-3 flex-wrap">
+      <div class="flex-grow-1">
+        <input 
+          name="listing[country]" 
+          value="<%= listing.country %>" 
+          type="text" 
+          placeholder="enter country" 
+          class="form-control" 
+          required
+        />
+        <div class="invalid-feedback">Country is required.</div>
+      </div>
+      <div class="flex-grow-1">
+        <input 
+          name="listing[location]" 
+          value="<%= listing.location %>" 
+          type="text" 
+          placeholder="enter location" 
+          class="form-control" 
+          required
+        />
+        <div class="invalid-feedback">Location is required.</div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-danger">Edit</button>
+  </form>
+</div>
+<br>
+<br>
+
+<script>
+  // Auto dismiss flash after 4.5 seconds
+  setTimeout(() => {
+    document.querySelectorAll('.flash-message').forEach(flash => {
+      flash.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+      flash.style.opacity = '0';
+      flash.style.transform = 'translate(-50%, -30px)';
+      setTimeout(() => flash.remove(), 400);
+    });
+  }, 4500);
+</script>
