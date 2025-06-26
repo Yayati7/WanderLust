@@ -29,12 +29,7 @@ router.get("/new",
   listingController.renderNewForm
 );
 
-router.get("/host/new", 
-  requireLogin("You must be logged in to become a host!"), 
-  (req, res) => {
-    res.render("listings/host.ejs");
-  }
-);
+
 
 router.get("/", listingController.index);
 
